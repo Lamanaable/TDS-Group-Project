@@ -9,7 +9,7 @@ Imperial College London Health Data Analytics and Machine Learning MSc students
 ### Finalised: 
 May 2022
 #### Data sources: 
-Both held on secure server: 
+Both held on secure server:   
 UK Biobank   
 HES 
 

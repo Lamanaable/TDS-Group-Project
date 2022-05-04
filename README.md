@@ -39,6 +39,6 @@ LASSO variable selection using full list of variables.
 group - Partial Least Squares - Discriminant Analysis (gPLS-DA) variable selection using full list of variables.  
 * Decision_trees  
 Decision trees and boosting models  
-* AUC_Comparison_Plot 
-Comparison of AUC from all models run.  
+* AUC_Comparison_Plot   
+Comparison of AUC from all models run.   
 

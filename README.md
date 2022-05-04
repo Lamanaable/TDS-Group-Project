@@ -13,7 +13,7 @@ Both held on secure server:
 UK Biobank   
 HES 
 
-## Contents (QV branch):
+## Contents:
 
 1.  Outcome_definition  
 Identifying cases 

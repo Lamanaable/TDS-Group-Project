@@ -1,11 +1,11 @@
 # GROUP 2 TDS Project Git Repository
 
 ## Project Title:
-Constructed Framework for Risk-Stratification and Risk Prediction for Colorectal Cancer Using UK Biobank
+Constructed Framework for Risk-Stratification and Risk Prediction for Colorectal Cancer Using UK Biobank  
 
-### Authors: 
-Ellie Bloom, Herman Eaves, Sophie Lai, Wei Quan
-Imperial College London Health Data Analytics and Machine Learning MSc students
+### Authors:  
+Ellie Bloom, Herman Eaves, Sophie Lai, Wei Quan 
+Imperial College London Health Data Analytics and Machine Learning MSc students 
 ### Finalised: 
 May 2022
 #### Data sources: 

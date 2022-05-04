@@ -1,0 +1,27 @@
+[1] "Data paths"
+[1] "Reading data"
+[1] "Assessment centre exclusion"
+[1] "10 year exclusion"
+[1] 5386
+[1] "Baseline CRC exclusion"
+[1] 0
+[1] "<1 year diagnosis"
+[1] 411
+[1] "<55 screened"
+[1] 149463
+[1] "renaming case status"
+[1] "Saving data"
+[1] "Total cases"
+[1] 4860
+[1] "incident cases"
+
+     0      1 
+465479   4860 
+[1] "prevalent cases"
+
+     0 
+470339 
+[1] "total cases"
+
+     0      1 
+465479   4860 

@@ -1,0 +1,14 @@
+Loading anaconda3/personal
+  Loading requirement: fix_unwritable_tmp fix_setxattr
+Loading required package: Matrix
+Loaded glmnet 4.0-2
+Warning messages:
+1: package ‘glmnet’ was built under R version 4.0.3 
+2: package ‘Matrix’ was built under R version 4.0.2 
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Warning messages:
+1: package ‘doParallel’ was built under R version 4.0.5 
+2: package ‘foreach’ was built under R version 4.0.5 
+3: package ‘iterators’ was built under R version 4.0.5 

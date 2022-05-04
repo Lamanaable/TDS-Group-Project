@@ -1,0 +1,11 @@
+{'C': 0.005, 'kernel': 'linear'}
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :        64            24
+ Used       :         3 (peak)  14.40 (ave)
+
+============================================

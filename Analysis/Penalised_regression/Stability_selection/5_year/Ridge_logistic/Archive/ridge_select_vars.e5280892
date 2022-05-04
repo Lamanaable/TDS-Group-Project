@@ -1,0 +1,10 @@
+Loading anaconda3/personal
+  Loading requirement: fix_unwritable_tmp fix_setxattr
+Loading required package: Matrix
+Loaded glmnet 4.1-3
+Warning message:
+package ‘Matrix’ was built under R version 4.1.1 
+Error in glmnet(x, y, weights = weights, offset = offset, lambda = lambda,  : 
+  x should be a matrix with 2 or more columns
+Calls: cv.glmnet -> cv.glmnet.raw -> glmnet
+Execution halted

@@ -1,0 +1,16 @@
+Loading anaconda3/personal
+  Loading requirement: fix_unwritable_tmp fix_setxattr
+Traceback (most recent call last):
+  File "/rds/general/project/hda_21-22/live/TDS/Group_2/TDS-Group-Project/Analysis/SVM/SVM.py", line 84, in <module>
+    svm_class.fit(X_train_small, y_train)
+  File "/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py", line 190, in fit
+    X, y = self._validate_data(
+  File "/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/sklearn/base.py", line 581, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+  File "/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/sklearn/utils/validation.py", line 964, in check_X_y
+    X = check_array(
+  File "/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/sklearn/utils/validation.py", line 746, in check_array
+    array = np.asarray(array, order=order, dtype=dtype)
+  File "/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py", line 2072, in __array__
+    return np.asarray(self._values, dtype=dtype)
+ValueError: could not convert string to float: 'train'

@@ -1,0 +1,60 @@
+[1] "loading packages"
+[1] "Number of cores"
+[1] 48
+[1] "Creating an empty matrix"
+     alpha lambda min lambda 1se No. predictors lambda min
+enet    NA         NA         NA                        NA
+     No. predictors lambda 1se Test MSE lambda min Test MSE lambda 1se
+enet                        NA                  NA                  NA
+[1] "Data preparation"
+[1] "Checking everything is numeric"
+
+integer numeric 
+     92     124 
+
+integer numeric 
+     92     124 
+'data.frame':	4571 obs. of  1 variable:
+ $ cc_status: int  0 0 0 1 0 0 1 0 0 0 ...
+'data.frame':	1371 obs. of  1 variable:
+ $ cc_status: int  0 0 1 0 0 0 1 1 1 0 ...
+[1] "Checking for NAs"
+complete_index
+TRUE 
+4571 
+complete_index
+TRUE 
+1371 
+complete_index
+TRUE 
+4571 
+complete_index
+TRUE 
+1371 
+[1] "Converting to matrices to be used by glmnet"
+[1] "Final check"
+
+numeric 
+ 987336 
+
+numeric 
+ 296136 
+ int [1:4571, 1] 0 0 0 1 0 0 1 0 0 0 ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:4571] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+ int [1:1371, 1] 0 0 1 0 0 0 1 1 1 0 ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:1371] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+[1] "Defining alpha cvm"
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :       128            96
+ Used       :         0 (peak)   0.66 (ave)
+
+============================================

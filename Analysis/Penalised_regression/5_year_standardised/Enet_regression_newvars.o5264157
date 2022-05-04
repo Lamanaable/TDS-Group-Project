@@ -1,0 +1,71 @@
+[1] "loading packages"
+[1] "Number of cores"
+[1] 256
+[1] "Creating an empty matrix"
+     alpha lambda min lambda 1se No. predictors lambda min
+enet    NA         NA         NA                        NA
+     No. predictors lambda 1se Test MSE lambda min Test MSE lambda 1se
+enet                        NA                  NA                  NA
+[1] "Data preparation"
+[1] "Checking everything is numeric"
+
+numeric 
+    214 
+
+numeric 
+    214 
+'data.frame':	4571 obs. of  1 variable:
+ $ cc_status: Factor w/ 2 levels "0","1": 1 1 1 2 1 1 2 1 1 1 ...
+'data.frame':	1371 obs. of  1 variable:
+ $ cc_status: Factor w/ 2 levels "0","1": 1 1 2 1 1 1 2 2 2 1 ...
+[1] "Checking for NAs"
+complete_index
+TRUE 
+4571 
+complete_index
+TRUE 
+1371 
+complete_index
+TRUE 
+4571 
+complete_index
+TRUE 
+1371 
+[1] "Converting to matrices to be used by glmnet"
+[1] "Final check"
+
+numeric 
+ 978194 
+
+numeric 
+ 293394 
+ chr [1:4571, 1] "0" "0" "0" "1" "0" "0" "1" "0" "0" "0" "0" "0" "1" "0" ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:4571] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+ chr [1:1371, 1] "0" "0" "1" "0" "0" "0" "1" "1" "1" "0" "1" "1" "0" "0" ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:1371] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+[1] "Defining alpha cvm"
+[1] "Running alpha cross validation and extracting the best alpha value"
+[1] "2022-03-09 12:03:12 GMT"
+[1] "2022-03-09 12:04:45 GMT"
+[1] "alpha.opt$minimum"
+[1] 0.422608
+[1] "alpha.opt"
+[1] 1.313361
+[1] "Running cross-validaiton on lambda with set value of alpha (alpha.opt$minimum)"
+[1] "Plotting EN model"
+null device 
+          1 
+[1] "Extracting lambda min and lambda 1se"
+[1] 0.02153003
+[1] 0.05990858
+[1] "MSE associated with lambda min"
+[1] 1.262978
+[1] "MSE associated with lambda 1se"
+[1] 1.274647
+[1] "Number of coefficients included in the model"
+[1] 7
+[1] "Making predictions based on the test set and extracting MSE on test set"

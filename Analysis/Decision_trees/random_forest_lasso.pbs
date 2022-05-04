@@ -1,0 +1,20 @@
+#PBS -l select=1:ncpus=48:mem=64gb
+#PBS -l walltime=24:0:0
+#PBS -N Random_forest_lasso
+
+# Load modules for any applications
+
+
+module load anaconda3/personal
+
+# Change to the directory the job was submitted from
+
+cd $PBS_O_WORKDIR
+
+# Run program, using 'mpiexec' to start the job
+# mpiexec automatically picks up the # of cores
+# assigned to the job. No other flags are required
+#  - note: don't use 'mpirun'
+
+
+python3 Random_forest_lasso.py

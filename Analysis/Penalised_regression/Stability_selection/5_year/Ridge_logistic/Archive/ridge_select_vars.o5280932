@@ -1,0 +1,71 @@
+[1] "loading packages"
+[1] "Creating an empty matrix"
+      alpha lambda min lambda 1se No. predictors lambda min
+Ridge    NA         NA         NA                        NA
+      No. predictors lambda 1se Test MSE lambda min Test MSE lambda 1se
+Ridge                        NA                  NA                  NA
+[1] "Data preparation"
+[1] "selecting vars"
+c("Asprin", "Greater_red_meat", "Low_veg", "Low_folate", "Education_below_highschool", 
+"Education_highschool", "Alcohol_less", "BMI_subhealthy", "waist_hip_ratio", 
+"pulse", "sysBP", "deprivation_townsend", "ethnicity_cat_Asian", 
+"ethnicity_cat_Black", "score_health", "score_housing", "occupation_unpaid_voluntary", 
+"occupation_employment_self_employed", "occupation_looking_after_family", 
+"time_TV", "weekly_mobile_len_hrs", "sleep_duration", "smoking_num_household", 
+"early_life_breastfed_as_baby_Yes", "body_size_age_ten_Plumper", 
+"height_age_ten_Shorter", "height_age_ten_Average", "overall_health_rate", 
+"smoking_status_Previous", "smoking_status_Current", "diet_alcohol_Previous", 
+"pollution_particulate_PM2.5_absorbance", "diet_oily_fish_cat", 
+"diet_non_oily_fish_cat", "diet_cereal", "diet_tea", "diet_coffee_Decaffeinated", 
+"diet_very_hot_drink", "weekly_red_wine", "weekly_beer", "father_death_age", 
+"mother_death_age", "family_history_Alzheimer", "family_history_BreastCancer", 
+"family_history_Diabetes", "family_history_LungCancer", "family_history_Parkinson", 
+"family_history_Stroke", "biomarker_RBC", "biomarker_HCT", "biomarker_platelet", 
+"biomarker_lymphocyte", "biomarker_Neu", "biomarker_urine_K", 
+"biomarker_CRP", "biomarker_LDL", "biomarker_TBL", "biomarker_Tprotein", 
+"biomarker_VD", "pace_maker", "meds_regular_calcium", "meds_regular_glucosamine", 
+"meds_regular_vitaminB", "meds_Statins", "meds_Antibiotics", 
+"meds_BetaBlocker", "meds_HBlocker", "ops_appendicectomy", "ops_sterilisation", 
+"Comorb_Hypertension", "Comorb_hypothyroidism", "Comorb_primary_hypertension", 
+"Comorb_AHD", "Comorb_Intestinal_infectious_diseases", "Comorb_infectious", 
+"Comorb_any_neoplasms", "Comorb_Blood_Immune", "Comorb_Diabetes_Complication", 
+"Comorb_Mental_disorder", "Comorb_Eye_adnexa", "Comorb_Ear", 
+"Comorb_Hypertensive_Heart", "Comorb_other_heart_diseases", "Comorb_Arteries", 
+"Comorb_Veins", "Comorb_Respiratory", "Comorb_oral", "Comorb_Gastrooesophageal_reflux_disease", 
+"Comorb_Other_oesophagus", "Comorb_Gastric_ulcer", "Comorb_Duodenal_ulcer", 
+"Comorb_Gastritis_duodenitis", "Comorb_Dyspepsia", "Comorb_other_stomach", 
+"Comorb_Appendix", "Comorb_Other_intestines", "Comorb_Renal_Failure", 
+"Comorb_Congenital", "Comorb_Other_Circ_symptoms", "Comorb_Other_Digest_symptoms"
+)
+[1] 100
+[1] 100
+[1] 100
+[1] "Ridge cross-validation"
+[1] "Plotting ridge"
+null device 
+          1 
+[1] "Number of non-zero coefficients (should be full amount for ridge)"
+[1] 100
+[1] "Number of variables"
+[1] 100
+[1] "Extracting lambda min and 1se"
+[1] "lambda min"
+[1] 0.1827953
+[1] "lambda 1se"
+[1] 2.053384
+[1] "MSE associated with lambda min"
+[1] 1.25854
+[1] "MSE associated with lambda 1se"
+[1] 1.270371
+[1] "Extracting the desired lambda valued (1se) - check if appropriate"
+[1] "Making predictions based on the test set and extracting MSE on test set"
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :         8             1
+ Used       :         0 (peak)   0.90 (ave)
+
+============================================

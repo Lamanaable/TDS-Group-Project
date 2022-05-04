@@ -1,0 +1,1056 @@
+[1] "loading packages"
+[1] "Number of cores"
+[1] 48
+[1] "Creating an empty matrix"
+     alpha lambda min lambda 1se No. predictors lambda min
+enet    NA         NA         NA                        NA
+     No. predictors lambda 1se Test MSE lambda min Test MSE lambda 1se
+enet                        NA                  NA                  NA
+[1] "Data preparation"
+[1] "Checking everything is numeric"
+
+integer numeric 
+     92     124 
+
+integer numeric 
+     92     124 
+'data.frame':	4424 obs. of  1 variable:
+ $ cc_status: int  0 0 0 1 0 0 1 0 0 0 ...
+'data.frame':	1326 obs. of  1 variable:
+ $ cc_status: int  0 0 1 0 0 0 1 1 1 0 ...
+[1] "Checking for NAs"
+complete_index
+TRUE 
+4424 
+complete_index
+TRUE 
+1326 
+complete_index
+TRUE 
+4424 
+complete_index
+TRUE 
+1326 
+[1] "Converting to matrices to be used by glmnet"
+[1] "Final check"
+
+numeric 
+ 955584 
+
+numeric 
+ 286416 
+ int [1:4424, 1] 0 0 0 1 0 0 1 0 0 0 ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:4424] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+ int [1:1326, 1] 0 0 1 0 0 0 1 1 1 0 ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:1326] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+[1] "Defining alpha cvm"
+[1] "Running alpha cross validation and extracting the best alpha value"
+[1] "2022-03-06 17:48:51 GMT"
+[1] "2022-03-06 17:50:10 GMT"
+[1] "alpha.opt$minimum"
+[1] 0.7472888
+[1] "alpha.opt"
+[1] 1.277923
+[1] "Running cross-validaiton on lambda with set value of alpha (alpha.opt$minimum)"
+[1] "Plotting EN model"
+null device 
+          1 
+[1] "Extracting lambda min and lambda 1se"
+[1] 0.01019084
+[1] 0.02583749
+[1] "MSE associated with lambda min"
+[1] 1.235659
+[1] "MSE associated with lambda 1se"
+[1] 1.244754
+[1] "Number of coefficients included in the model"
+[1] 11
+[1] "Making predictions based on the test set and extracting MSE on test set"
+[1] 2.018527
+[1] 2.318484
+[1] "Adding to summary results"
+         alpha lambda min lambda 1se No. predictors lambda min
+enet 0.7472888 0.01019084 0.02583749                        62
+     No. predictors lambda 1se Test MSE lambda min Test MSE lambda 1se
+enet                        11            2.318484            2.018527
+[1] "Coefficients under lambda min"
+                                     colnames.X_train..a.        OR
+1                                                       X 0.2920929
+2                                             Model_NSAID 1.0002499
+3                                            Model_Asprin 0.9842094
+4                                       Model_Lower_fibre 1.0664092
+5                                          Model_Diabetes 0.9904872
+6                       Model_Education_other.professions 1.0473013
+7                                            Model_height 1.0292557
+8                                         Model_BMI_cat_1 0.9597790
+9                                                   pulse 1.0158388
+10                                                  sysBP 1.0819081
+11                                   deprivation_townsend 0.9762615
+12                                    ethnicity_cat_Black 0.8924997
+13                               score_living_environment 0.9741590
+14                                     occupation_Retired 1.2489809
+15                                          time_computer 1.0419102
+16                                         sleep_duration 0.9916523
+17 early_life_comparative_body_size_age_ten_About.average 1.0222614
+18           early_life_comparative_height_age_ten_Taller 0.9355570
+19                                smoking_status_Previous 0.9916443
+20                                 smoking_status_Current 1.1250554
+21                                   diet_alcohol_Current 1.0369697
+22                                 diet_non_oily_fish_cat 0.9757614
+23                                  diet_bread_type_White 0.9505298
+24                                            diet_cereal 0.9728888
+25                                          diet_salt_cat 0.9770091
+26                                            diet_coffee 0.9962677
+27                                             diet_water 1.0102661
+28                                  weekly_spirits_intake 1.1224649
+29                            family_history_BreastCancer 1.0204770
+30                                    family_history_COPD 1.0938152
+31                                  family_history_Cardio 0.9723031
+32                              family_history_LungCancer 0.9582678
+33                                family_history_Prostate 0.9572407
+34                                     biomarker_platelet 0.9597259
+35                                   biomarker_lymphocyte 1.0140236
+36                                          biomarker_Neu 0.9984971
+37                                      biomarker_urine_K 1.0634412
+38                                     biomarker_urine_Na 1.0040293
+39                                          biomarker_TRG 0.9777854
+40                                           biomarker_VD 1.0069028
+41              medication_6177_Blood.pressure.medication 1.0567153
+42                          medication_20003_antioxidants 1.0785811
+43                                  medication_20003_ACEI 0.9881734
+44                           medication_20003_BetaBlocker 1.0142158
+45                             medication_20003_diuretics 1.0415917
+46                             medication_20003_H_Blocker 0.9583509
+47                               medication_20003_omega_3 1.0131127
+48                        operation_20004_cholecystectomy 0.9298514
+49            comorbidity_20002_Gastro_Oesophageal_Reflux 1.0006134
+50             comorbidity_D_benign_rectal_neoplasms_poly 0.6734582
+51           comorbidity_A_Intestinal_infectious_diseases 1.0000357
+52                             comorbidity_D_Blood_Immune 1.0232531
+53                           comorbidity_G_Nervous_system 0.9810448
+54                                      comorbidity_H_Ear 1.0252286
+55                        comorbidity_I_Circ_Hypertensive 1.0593605
+56                                     comorbidity_K_oral 1.0121146
+57                           comorbidity_K_Duodenal_ulcer 1.0406413
+58                                comorbidity_K_Dyspepsia 0.9490645
+59                                 comorbidity_K_Appendix 0.9887512
+60                             comorbidity_K8_Gallbladder 1.0407177
+61                                     comorbidity_L_skin 1.0302673
+62                          comorbidity_R1_Other_symptoms 0.9619719
+63                          comorbidity_R3_Other_symptoms 0.9717275
+[1] "Exporting coefficients"
+[1] "Coefficients under lambda 1se"
+              colnames.X_train..b.        OR
+1                                X 0.3255778
+2                      Model_NSAID 1.0002006
+3                     Model_height 1.0212303
+4                            sysBP 1.0418143
+5                    time_computer 1.0127384
+6          smoking_status_Previous 0.9653252
+7           smoking_status_Current 1.0104616
+8            weekly_spirits_intake 1.0745055
+9                biomarker_urine_K 1.0164081
+10   medication_20003_antioxidants 1.0277517
+11 operation_20004_cholecystectomy 0.9850137
+12 comorbidity_I_Circ_Hypertensive 1.0101465
+[1] "Exporting coefficients"
+[1] "Stability analysis under lambda 1se"
+[1] "Defining function"
+[1] "Running function with 100 iterations"
+[1] "Model size for each iteration"
+  [1]  3  7 10 19  6 11  7  2  4  7  4  2 11  8  6  7  9 21  8 10  5  1 25  5  7
+ [26]  9  2 10  9  8 11  4  7  2  4  5  4  8 11  8  6  6 22  1  6  8 20  7  9  1
+ [51]  7  6  7  1  8  2  6  4  2  7  5 20  5  4 13  2  5  5  4  5  5  7 12  6 10
+ [76] 31  1  4  7  2 11  2  1  6  9  2  6  7  5  1  2 10  2 11 11  5 11  2  9  4
+[1] "The proportion of selection of each variable"
+[1] "Visualisation of proportion selected"
+[1] "Table of proportion selected under lambda 1se"
+                                                          X 
+                                                       1.00 
+                                         weekly_beer_intake 
+                                                       0.93 
+                                                      pulse 
+                                                       0.68 
+                                    Model_smoking_pack_year 
+                                                       0.62 
+                                   medication_20003_Statins 
+                                                       0.54 
+                                       smoking_status_Never 
+                                                       0.50 
+                                              biomarker_Neu 
+                                                       0.47 
+                                                    time_TV 
+                                                       0.34 
+                                          comorbidity_H_Ear 
+                                                       0.31 
+                             operation_20004_appendicectomy 
+                                                       0.25 
+                                    smoking_status_Previous 
+                                                       0.23 
+                                            waist_hip_ratio 
+                                                       0.17 
+                                                diet_cereal 
+                                                       0.09 
+                               medication_20003_glucosamine 
+                                                       0.09 
+                                comorbidity_K_Gastric_ulcer 
+                                                       0.06 
+                occupation_Looking.after.home.and.or.family 
+                                                       0.05 
+                                       medication_20003_CCB 
+                                                       0.05 
+      comorbidity_ICD10_I25.1.Atherosclerotic.heart.disease 
+                                                       0.05 
+                                       comorbidity_K7_Liver 
+                                                       0.05 
+                                              score_housing 
+                                                       0.04 
+                                family_history_BreastCancer 
+                                                       0.04 
+                                              biomarker_TRG 
+                                                       0.04 
+                               medication_20003_BetaBlocker 
+                                                       0.04 
+                                            Model_BMI_cat_0 
+                                                       0.03 
+                                 comorbidity_20002_diabetes 
+                                                       0.03 
+                                  comorbidity_C_D_neoplasms 
+                                                       0.03 
+                                   comorbidity_H_Eye_adnexa 
+                                                       0.03 
+                         comorbidity_K_Gastritis_duodenitis 
+                                                       0.03 
+                                Model_Education_high.school 
+                                                       0.02 
+              early_life_comparative_height_age_ten_Shorter 
+                                                       0.02 
+                                      diet_bread_type_White 
+                                                       0.02 
+                                         biomarker_Tprotein 
+                                                       0.02 
+                  medication_diet_mineral_6719__Glucosamine 
+                                                       0.02 
+                                 medication_20003_metformin 
+                                                       0.02 
+                             comorbidity_20002_hypertension 
+                                                       0.02 
+                                  comorbidity_J_Respiratory 
+                                                       0.02 
+                                comorbidity_K_other_stomach 
+                                                       0.02 
+                                             Model_Diabetes 
+                                                       0.01 
+                                            Model_BMI_cat_2 
+                                                       0.01 
+                                        ethnicity_cat_Asian 
+                                                       0.01 
+                                      weekly_mobile_len_hrs 
+                                                       0.01 
+           early_life_comparative_body_size_age_ten_Plumper 
+                                                       0.01 
+                                         diet_oily_fish_cat 
+                                                       0.01 
+                    diet_bread_type_Wholemeal.or.wholegrain 
+                                                       0.01 
+                                         family_history_HBP 
+                                                       0.01 
+                                              biomarker_HCT 
+                                                       0.01 
+                                              biomarker_CRP 
+                                                       0.01 
+                          medication_vitamin_6155_Vitamin.D 
+                                                       0.01 
+                                      comorbidity_E_Obesity 
+                                                       0.01 
+                         comorbidity_I_Circ_Ischaemic_heart 
+                                                       0.01 
+                                 comorbidity_K8_Gallbladder 
+                                                       0.01 
+                              comorbidity_R0_Other_symptoms 
+                                                       0.01 
+                              comorbidity_R1_Other_symptoms 
+                                                       0.01 
+                                                Model_NSAID 
+                                                       0.00 
+                                               Model_Asprin 
+                                                       0.00 
+                                             Model_Lower_Ca 
+                                                       0.00 
+                                          Model_Lower_fibre 
+                                                       0.00 
+                               Model_Greater_processed_meat 
+                                                       0.00 
+                                     Model_Greater_red_meat 
+                                                       0.00 
+                                              Model_Low_veg 
+                                                       0.00 
+                                            Model_Low_fruit 
+                                                       0.00 
+                                           Model_Low_folate 
+                                                       0.00 
+                      Model_Education_less.than.high.school 
+                                                       0.00 
+                          Model_Education_other.professions 
+                                                       0.00 
+                                Model_Education_college.uni 
+                                                       0.00 
+                                       Model_Alcohol_more_0 
+                                                       0.00 
+                                       Model_Alcohol_more_2 
+                                                       0.00 
+                                       Model_Alcohol_more_1 
+                                                       0.00 
+                                            Model_Sedentary 
+                                                       0.00 
+                                               Model_height 
+                                                       0.00 
+                                            Model_BMI_cat_1 
+                                                       0.00 
+                                                     Weight 
+                                                       0.00 
+                                                      sysBP 
+                                                       0.00 
+                                                      diaBP 
+                                                       0.00 
+                                                   age_recr 
+                                                       0.00 
+                                                   sex_male 
+                                                       0.00 
+                                       deprivation_townsend 
+                                                       0.00 
+                                       household_income_GBP 
+                                                       0.00 
+                                      skin_colour_Very.fair 
+                                                       0.00 
+                                           skin_colour_Fair 
+                                                       0.00 
+                                    skin_colour_Light.olive 
+                                                       0.00 
+                                     skin_colour_Dark.olive 
+                                                       0.00 
+                                          skin_colour_Brown 
+                                                       0.00 
+                                          skin_colour_Black 
+                                                       0.00 
+                                        ethnicity_cat_Black 
+                                                       0.00 
+                                        ethnicity_cat_Mixed 
+                                                       0.00 
+                                        ethnicity_cat_Other 
+                                                       0.00 
+                                        ethnicity_cat_White 
+                                                       0.00 
+                                               score_income 
+                                                       0.00 
+                                           score_employment 
+                                                       0.00 
+                                               score_health 
+                                                       0.00 
+                                            score_education 
+                                                       0.00 
+                                   score_living_environment 
+                                                       0.00 
+                  occupation_Doing.unpaid.or.voluntary.work 
+                                                       0.00 
+             occupation_In.paid.employment.or.self.employed 
+                                                       0.00 
+                                         occupation_Retired 
+                                                       0.00 
+occupation_Unable.to.work.because.of.sickness.or.disability 
+                                                       0.00 
+                                              time_computer 
+                                                       0.00 
+                                             sleep_duration 
+                                                       0.00 
+                                      smoking_num_household 
+                                                       0.00 
+                            early_life_breastfed_as_baby_No 
+                                                       0.00 
+                           early_life_breastfed_as_baby_Yes 
+                                                       0.00 
+           early_life_comparative_body_size_age_ten_Thinner 
+                                                       0.00 
+     early_life_comparative_body_size_age_ten_About.average 
+                                                       0.00 
+               early_life_comparative_height_age_ten_Taller 
+                                                       0.00 
+        early_life_comparative_height_age_ten_About.average 
+                                                       0.00 
+                                        overall_health_rate 
+                                                       0.00 
+                                     smoking_status_Current 
+                                                       0.00 
+                                         diet_alcohol_Never 
+                                                       0.00 
+                                      diet_alcohol_Previous 
+                                                       0.00 
+                                       diet_alcohol_Current 
+                                                       0.00 
+                                          pollution_NO_2010 
+                                                       0.00 
+                                 pollution_particulate_PM10 
+                                                       0.00 
+                                pollution_particulate_PM2.5 
+                                                       0.00 
+                     pollution_particulate_PM2.5_absorbance 
+                                                       0.00 
+                            pollution_particulate_PM_course 
+                                                       0.00 
+                                     diet_non_oily_fish_cat 
+                                                       0.00 
+                                      diet_bread_type_Brown 
+                                                       0.00 
+                                              diet_salt_cat 
+                                                       0.00 
+                                                   diet_tea 
+                                                       0.00 
+                                  diet_coffee_Decaffeinated 
+                                                       0.00 
+                                                diet_coffee 
+                                                       0.00 
+                                        diet_very_hot_drink 
+                                                       0.00 
+                                                 diet_water 
+                                                       0.00 
+                                     weekly_red_wine_intake 
+                                                       0.00 
+                     weekly_champagne_and_white_wine_intake 
+                                                       0.00 
+                                      weekly_spirits_intake 
+                                                       0.00 
+                               weekly_fortified_wine_intake 
+                                                       0.00 
+                                  birth_maternal_smoking_No 
+                                                       0.00 
+                                 birth_maternal_smoking_Yes 
+                                                       0.00 
+                                           father_death_age 
+                                                       0.00 
+                                           mother_death_age 
+                                                       0.00 
+                                   family_history_Alzheimer 
+                                                       0.00 
+                                         family_history_CRC 
+                                                       0.00 
+                                        family_history_COPD 
+                                                       0.00 
+                                    family_history_Diabetes 
+                                                       0.00 
+                                      family_history_Cardio 
+                                                       0.00 
+                                  family_history_LungCancer 
+                                                       0.00 
+                                   family_history_Parkinson 
+                                                       0.00 
+                                    family_history_Prostate 
+                                                       0.00 
+                                      family_history_Stroke 
+                                                       0.00 
+                                              biomarker_RBC 
+                                                       0.00 
+                                         biomarker_platelet 
+                                                       0.00 
+                                       biomarker_lymphocyte 
+                                                       0.00 
+                                          biomarker_urine_K 
+                                                       0.00 
+                                         biomarker_urine_Na 
+                                                       0.00 
+                                              biomarker_CHL 
+                                                       0.00 
+                                          biomarker_glucose 
+                                                       0.00 
+                                            biomarker_HbA1c 
+                                                       0.00 
+                                              biomarker_HDL 
+                                                       0.00 
+                                          biomarker_IGF_one 
+                                                       0.00 
+                                              biomarker_LDL 
+                                                       0.00 
+                                              biomarker_TBL 
+                                                       0.00 
+                                               biomarker_VD 
+                                                       0.00 
+                                                 pace_maker 
+                                                       0.00 
+                      medication_diet_mineral_6719__Calcium 
+                                                       0.00 
+                      medication_diet_mineral_6719_Fish.oil 
+                                                       0.00 
+                         medication_diet_mineral_6719__Zinc 
+                                                       0.00 
+                      medication_vitamin_6155_Multivitamins 
+                                                       0.00 
+                          medication_vitamin_6155_Vitamin.B 
+                                                       0.00 
+                          medication_vitamin_6155_Vitamin.C 
+                                                       0.00 
+                  medication_6177_Blood.pressure.medication 
+                                                       0.00 
+            medication_6177_Cholesterol.lowering.medication 
+                                                       0.00 
+                                   medication_20003_Aspirin 
+                                                       0.00 
+                                    medication_20003_NSAIDS 
+                                                       0.00 
+                              medication_20003_antioxidants 
+                                                       0.00 
+                               medication_20003_antibiotics 
+                                                       0.00 
+                                      medication_20003_ACEI 
+                                                       0.00 
+                                       medication_20003_ARB 
+                                                       0.00 
+                                 medication_20003_diuretics 
+                                                       0.00 
+                                 medication_20003_H_Blocker 
+                                                       0.00 
+                                   medication_20003_omega_3 
+                                                       0.00 
+                            operation_20004_cholecystectomy 
+                                                       0.00 
+                              operation_20004_sterilisation 
+                                                       0.00 
+                                      cardiovascular_Angina 
+                                                       0.00 
+                                cardiovascular_Heart.attack 
+                                                       0.00 
+                         cardiovascular_High.blood.pressure 
+                                                       0.00 
+                                   comorbidity_20002_asthma 
+                                                       0.00 
+                               comorbidity_20002_depression 
+                                                       0.00 
+                comorbidity_20002_Gastro_Oesophageal_Reflux 
+                                                       0.00 
+               comorbidity_20002_hayfever.allergic.rhinitis 
+                                                       0.00 
+       comorbidity_20002_heart.attack.myocardial.infarction 
+                                                       0.00 
+                         comorbidity_20002_high.cholesterol 
+                                                       0.00 
+                 comorbidity_20002_hypothyroidism.myxoedema 
+                                                       0.00 
+                           comorbidity_20002_osteoarthritis 
+                                                       0.00 
+         comorbidity_ICD10_E78.0.Pure.hypercholesterolaemia 
+                                                       0.00 
+     comorbidity_ICD10_I10.Essential..primary..hypertension 
+                                                       0.00 
+                 comorbidity_D_benign_rectal_neoplasms_poly 
+                                                       0.00 
+               comorbidity_A_Intestinal_infectious_diseases 
+                                                       0.00 
+                                   comorbidity_B_infectious 
+                                                       0.00 
+                                 comorbidity_D_Blood_Immune 
+                                                       0.00 
+                            comorbidity_E_Endocrine_thyroid 
+                                                       0.00 
+                                     comorbidity_E_Diabetes 
+                                                       0.00 
+                          comorbidity_E_Metabolic_disorders 
+                                                       0.00 
+                              comorbidity_F_Mental_disorder 
+                                                       0.00 
+                               comorbidity_G_Nervous_system 
+                                                       0.00 
+                            comorbidity_I_Circ_Hypertensive 
+                                                       0.00 
+                         comorbidity_I_other_heart_diseases 
+                                                       0.00 
+                              comorbidity_I_Cerebrovascular 
+                                                       0.00 
+                                     comorbidity_I_Arteries 
+                                                       0.00 
+                                        comorbidity_I_Veins 
+                                                       0.00 
+                                         comorbidity_K_oral 
+                                                       0.00 
+             comorbidity_K_Gastrooesophageal_reflux_disease 
+                                                       0.00 
+                             comorbidity_K_Other_oesophagus 
+                                                       0.00 
+                               comorbidity_K_Duodenal_ulcer 
+                                                       0.00 
+                                    comorbidity_K_Dyspepsia 
+                                                       0.00 
+                                     comorbidity_K_Appendix 
+                                                       0.00 
+                                       comorbidity_K_Hernia 
+                                                       0.00 
+                                    comorbidity_K_51_52_IBD 
+                                                       0.00 
+                       comorbidity_K55_K64_Other_intestines 
+                                                       0.00 
+                                         comorbidity_L_skin 
+                                                       0.00 
+                                comorbidity_N_Renal_Failure 
+                                                       0.00 
+                                 comorbidity_N_Urolithiasis 
+                                                       0.00 
+                                comorbidity_N_Other_urinary 
+                                                       0.00 
+                                   comorbidity_Q_Congenital 
+                                                       0.00 
+                              comorbidity_R3_Other_symptoms 
+                                                       0.00 
+[1] "Stability analysis under lambda min"
+[1] "Defining function"
+[1] "Running function with 100 iterations"
+[1] "Model size for each iteration"
+  [1] 56 62 43 54 46 53 41 64 34 48 45 39 53 42 64 48 47 59 55 62 50 43 68 43 39
+ [26] 44 50 58 52 43 25 34 45 38 57 35 46 54 55 37 47 57 59 50 54 59 62 17 71 40
+ [51] 45 41 34 64 59 38 41 52 52 58 43 71 43 57 61 25 42 44 51 43 50 43 42 59 44
+ [76] 71 68 41 62 47 39 22 50 42 63 32 50 39 57 42 30 32 40 41 60 45 62 54 52 30
+[1] "The proportion of selection of each variable"
+[1] "Visualisation of proportion selected"
+[1] "Table of proportion selected under lambda min"
+                                                          X 
+                                                       1.00 
+                                                      pulse 
+                                                       1.00 
+                                         weekly_beer_intake 
+                                                       1.00 
+                                              biomarker_Neu 
+                                                       1.00 
+                                   medication_20003_Statins 
+                                                       1.00 
+                             operation_20004_appendicectomy 
+                                                       1.00 
+      comorbidity_ICD10_I25.1.Atherosclerotic.heart.disease 
+                                                       1.00 
+                                          comorbidity_H_Ear 
+                                                       0.99 
+                                                    time_TV 
+                                                       0.97 
+                         comorbidity_K_Gastritis_duodenitis 
+                                                       0.95 
+                                    smoking_status_Previous 
+                                                       0.94 
+                               medication_20003_glucosamine 
+                                                       0.92 
+                                    Model_smoking_pack_year 
+                                                       0.91 
+                                              biomarker_HCT 
+                                                       0.91 
+                                       comorbidity_K7_Liver 
+                                                       0.91 
+                occupation_Looking.after.home.and.or.family 
+                                                       0.90 
+                                comorbidity_K_Gastric_ulcer 
+                                                       0.90 
+                               medication_20003_BetaBlocker 
+                                                       0.88 
+                              comorbidity_R0_Other_symptoms 
+                                                       0.87 
+                                              score_housing 
+                                                       0.83 
+                                family_history_BreastCancer 
+                                                       0.82 
+              early_life_comparative_height_age_ten_Shorter 
+                                                       0.81 
+                                  comorbidity_C_D_neoplasms 
+                                                       0.78 
+                                                diet_cereal 
+                                                       0.77 
+                                            Model_BMI_cat_0 
+                                                       0.73 
+                                         biomarker_Tprotein 
+                                                       0.72 
+                                   comorbidity_H_Eye_adnexa 
+                                                       0.70 
+                                 comorbidity_K8_Gallbladder 
+                                                       0.70 
+                              comorbidity_R1_Other_symptoms 
+                                                       0.70 
+                                       smoking_status_Never 
+                                                       0.66 
+                                       medication_20003_CCB 
+                                                       0.66 
+                                Model_Education_high.school 
+                                                       0.64 
+                                     diet_non_oily_fish_cat 
+                                                       0.64 
+                                         family_history_HBP 
+                                                       0.62 
+                    diet_bread_type_Wholemeal.or.wholegrain 
+                                                       0.58 
+                                         biomarker_platelet 
+                                                       0.56 
+                                              biomarker_TRG 
+                                                       0.53 
+                                comorbidity_K_other_stomach 
+                                                       0.50 
+                                  comorbidity_J_Respiratory 
+                                                       0.49 
+                                        ethnicity_cat_Asian 
+                                                       0.48 
+           early_life_comparative_body_size_age_ten_Plumper 
+                                                       0.48 
+                              comorbidity_F_Mental_disorder 
+                                                       0.48 
+                                            waist_hip_ratio 
+                                                       0.47 
+                                    family_history_Diabetes 
+                                                       0.47 
+                                   family_history_Parkinson 
+                                                       0.46 
+                          medication_vitamin_6155_Vitamin.D 
+                                                       0.44 
+                                 medication_20003_metformin 
+                                                       0.44 
+                                 comorbidity_20002_diabetes 
+                                                       0.44 
+                                         diet_oily_fish_cat 
+                                                       0.42 
+                                        diet_very_hot_drink 
+                                                       0.42 
+                                         family_history_CRC 
+                                                       0.39 
+                               medication_20003_antibiotics 
+                                                       0.39 
+                 comorbidity_D_benign_rectal_neoplasms_poly 
+                                                       0.37 
+                                      diet_alcohol_Previous 
+                                                       0.35 
+                                                Model_NSAID 
+                                                       0.34 
+                                             Model_Lower_Ca 
+                                                       0.34 
+                                      weekly_mobile_len_hrs 
+                                                       0.33 
+                                           Model_Low_folate 
+                                                       0.32 
+                                                   sex_male 
+                                                       0.32 
+                                          biomarker_urine_K 
+                                                       0.31 
+                comorbidity_20002_Gastro_Oesophageal_Reflux 
+                                                       0.31 
+                         comorbidity_I_Circ_Ischaemic_heart 
+                                                       0.25 
+                             comorbidity_20002_hypertension 
+                                                       0.24 
+                                Model_Education_college.uni 
+                                                       0.23 
+                                          Model_Lower_fibre 
+                                                       0.22 
+                                  diet_coffee_Decaffeinated 
+                                                       0.22 
+                              comorbidity_I_Cerebrovascular 
+                                                       0.22 
+                                          biomarker_IGF_one 
+                                                       0.21 
+         comorbidity_ICD10_E78.0.Pure.hypercholesterolaemia 
+                                                       0.21 
+             comorbidity_K_Gastrooesophageal_reflux_disease 
+                                                       0.21 
+                                   comorbidity_B_infectious 
+                                                       0.20 
+                                              Model_Low_veg 
+                                                       0.19 
+                  medication_diet_mineral_6719__Glucosamine 
+                                                       0.19 
+                                                 pace_maker 
+                                                       0.18 
+                          medication_vitamin_6155_Vitamin.B 
+                                                       0.18 
+                             comorbidity_K_Other_oesophagus 
+                                                       0.17 
+                            early_life_breastfed_as_baby_No 
+                                                       0.16 
+           early_life_comparative_body_size_age_ten_Thinner 
+                                                       0.16 
+                                       biomarker_lymphocyte 
+                                                       0.16 
+                           comorbidity_20002_osteoarthritis 
+                                                       0.16 
+                                                     Weight 
+                                                       0.15 
+                                      diet_bread_type_White 
+                                                       0.15 
+                                comorbidity_N_Renal_Failure 
+                                                       0.15 
+                                        ethnicity_cat_White 
+                                                       0.14 
+                  occupation_Doing.unpaid.or.voluntary.work 
+                                                       0.14 
+                                              biomarker_CRP 
+                                                       0.14 
+                     pollution_particulate_PM2.5_absorbance 
+                                                       0.12 
+                          medication_vitamin_6155_Vitamin.C 
+                                                       0.12 
+                            comorbidity_E_Endocrine_thyroid 
+                                                       0.12 
+                                             sleep_duration 
+                                                       0.11 
+                            pollution_particulate_PM_course 
+                                                       0.11 
+                                      weekly_spirits_intake 
+                                                       0.11 
+                         medication_diet_mineral_6719__Zinc 
+                                                       0.11 
+                                 medication_20003_H_Blocker 
+                                                       0.11 
+                                      comorbidity_E_Obesity 
+                                                       0.11 
+                                          skin_colour_Brown 
+                                                       0.10 
+                                          skin_colour_Black 
+                                                       0.09 
+                               comorbidity_20002_depression 
+                                                       0.09 
+                                             Model_Diabetes 
+                                                       0.08 
+                                          biomarker_glucose 
+                                                       0.08 
+       comorbidity_20002_heart.attack.myocardial.infarction 
+                                                       0.08 
+                                     Model_Greater_red_meat 
+                                                       0.07 
+                                                   diet_tea 
+                                                       0.07 
+                                            Model_BMI_cat_1 
+                                                       0.06 
+                                                      diaBP 
+                                                       0.06 
+                                         diet_alcohol_Never 
+                                                       0.06 
+                      medication_diet_mineral_6719__Calcium 
+                                                       0.06 
+                                     comorbidity_E_Diabetes 
+                                                       0.06 
+                                         comorbidity_K_oral 
+                                                       0.06 
+                                         comorbidity_L_skin 
+                                                       0.06 
+                                    skin_colour_Light.olive 
+                                                       0.05 
+                                                diet_coffee 
+                                                       0.05 
+                                 comorbidity_D_Blood_Immune 
+                                                       0.05 
+                                     comorbidity_K_Appendix 
+                                                       0.05 
+                                pollution_particulate_PM2.5 
+                                                       0.04 
+                                                 diet_water 
+                                                       0.04 
+                                      family_history_Stroke 
+                                                       0.04 
+                       comorbidity_K55_K64_Other_intestines 
+                                                       0.04 
+                                            Model_BMI_cat_2 
+                                                       0.03 
+                                           score_employment 
+                                                       0.03 
+                                   score_living_environment 
+                                                       0.03 
+occupation_Unable.to.work.because.of.sickness.or.disability 
+                                                       0.03 
+                                      smoking_num_household 
+                                                       0.03 
+                                              diet_salt_cat 
+                                                       0.03 
+                                     weekly_red_wine_intake 
+                                                       0.03 
+                                 birth_maternal_smoking_Yes 
+                                                       0.03 
+                                cardiovascular_Heart.attack 
+                                                       0.03 
+     comorbidity_ICD10_I10.Essential..primary..hypertension 
+                                                       0.03 
+                            comorbidity_I_Circ_Hypertensive 
+                                                       0.03 
+                                   comorbidity_Q_Congenital 
+                                                       0.03 
+                                            Model_Sedentary 
+                                                       0.02 
+                                       deprivation_townsend 
+                                                       0.02 
+                                        ethnicity_cat_Other 
+                                                       0.02 
+                                              time_computer 
+                                                       0.02 
+               early_life_comparative_height_age_ten_Taller 
+                                                       0.02 
+        early_life_comparative_height_age_ten_About.average 
+                                                       0.02 
+                                  family_history_LungCancer 
+                                                       0.02 
+                                         biomarker_urine_Na 
+                                                       0.02 
+                                    medication_20003_NSAIDS 
+                                                       0.02 
+                                        comorbidity_I_Veins 
+                                                       0.02 
+                                    comorbidity_K_51_52_IBD 
+                                                       0.02 
+                                 comorbidity_N_Urolithiasis 
+                                                       0.02 
+                      Model_Education_less.than.high.school 
+                                                       0.01 
+                                                      sysBP 
+                                                       0.01 
+                                                   age_recr 
+                                                       0.01 
+                                      skin_colour_Very.fair 
+                                                       0.01 
+                                     skin_colour_Dark.olive 
+                                                       0.01 
+                                        ethnicity_cat_Black 
+                                                       0.01 
+                                        ethnicity_cat_Mixed 
+                                                       0.01 
+                                               score_health 
+                                                       0.01 
+                                            score_education 
+                                                       0.01 
+                                      diet_bread_type_Brown 
+                                                       0.01 
+                                  birth_maternal_smoking_No 
+                                                       0.01 
+                                    family_history_Prostate 
+                                                       0.01 
+                                              biomarker_RBC 
+                                                       0.01 
+                                              biomarker_CHL 
+                                                       0.01 
+                                              biomarker_HDL 
+                                                       0.01 
+                      medication_diet_mineral_6719_Fish.oil 
+                                                       0.01 
+                      medication_vitamin_6155_Multivitamins 
+                                                       0.01 
+                                      medication_20003_ACEI 
+                                                       0.01 
+                              operation_20004_sterilisation 
+                                                       0.01 
+                         cardiovascular_High.blood.pressure 
+                                                       0.01 
+                         comorbidity_20002_high.cholesterol 
+                                                       0.01 
+                                     comorbidity_I_Arteries 
+                                                       0.01 
+                               comorbidity_K_Duodenal_ulcer 
+                                                       0.01 
+                                    comorbidity_K_Dyspepsia 
+                                                       0.01 
+                              comorbidity_R3_Other_symptoms 
+                                                       0.01 
+                                               Model_Asprin 
+                                                       0.00 
+                               Model_Greater_processed_meat 
+                                                       0.00 
+                                            Model_Low_fruit 
+                                                       0.00 
+                          Model_Education_other.professions 
+                                                       0.00 
+                                       Model_Alcohol_more_0 
+                                                       0.00 
+                                       Model_Alcohol_more_2 
+                                                       0.00 
+                                       Model_Alcohol_more_1 
+                                                       0.00 
+                                               Model_height 
+                                                       0.00 
+                                       household_income_GBP 
+                                                       0.00 
+                                           skin_colour_Fair 
+                                                       0.00 
+                                               score_income 
+                                                       0.00 
+             occupation_In.paid.employment.or.self.employed 
+                                                       0.00 
+                                         occupation_Retired 
+                                                       0.00 
+                           early_life_breastfed_as_baby_Yes 
+                                                       0.00 
+     early_life_comparative_body_size_age_ten_About.average 
+                                                       0.00 
+                                        overall_health_rate 
+                                                       0.00 
+                                     smoking_status_Current 
+                                                       0.00 
+                                       diet_alcohol_Current 
+                                                       0.00 
+                                          pollution_NO_2010 
+                                                       0.00 
+                                 pollution_particulate_PM10 
+                                                       0.00 
+                     weekly_champagne_and_white_wine_intake 
+                                                       0.00 
+                               weekly_fortified_wine_intake 
+                                                       0.00 
+                                           father_death_age 
+                                                       0.00 
+                                           mother_death_age 
+                                                       0.00 
+                                   family_history_Alzheimer 
+                                                       0.00 
+                                        family_history_COPD 
+                                                       0.00 
+                                      family_history_Cardio 
+                                                       0.00 
+                                            biomarker_HbA1c 
+                                                       0.00 
+                                              biomarker_LDL 
+                                                       0.00 
+                                              biomarker_TBL 
+                                                       0.00 
+                                               biomarker_VD 
+                                                       0.00 
+                  medication_6177_Blood.pressure.medication 
+                                                       0.00 
+            medication_6177_Cholesterol.lowering.medication 
+                                                       0.00 
+                                   medication_20003_Aspirin 
+                                                       0.00 
+                              medication_20003_antioxidants 
+                                                       0.00 
+                                       medication_20003_ARB 
+                                                       0.00 
+                                 medication_20003_diuretics 
+                                                       0.00 
+                                   medication_20003_omega_3 
+                                                       0.00 
+                            operation_20004_cholecystectomy 
+                                                       0.00 
+                                      cardiovascular_Angina 
+                                                       0.00 
+                                   comorbidity_20002_asthma 
+                                                       0.00 
+               comorbidity_20002_hayfever.allergic.rhinitis 
+                                                       0.00 
+                 comorbidity_20002_hypothyroidism.myxoedema 
+                                                       0.00 
+               comorbidity_A_Intestinal_infectious_diseases 
+                                                       0.00 
+                          comorbidity_E_Metabolic_disorders 
+                                                       0.00 
+                               comorbidity_G_Nervous_system 
+                                                       0.00 
+                         comorbidity_I_other_heart_diseases 
+                                                       0.00 
+                                       comorbidity_K_Hernia 
+                                                       0.00 
+                                comorbidity_N_Other_urinary 
+                                                       0.00 
+[1] "done"
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :       128            96
+ Used       :         4 (peak)   4.70 (ave)
+
+============================================

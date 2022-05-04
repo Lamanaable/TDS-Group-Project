@@ -1,0 +1,36 @@
+Model_BMI_cat
+   0    1    2 
+4093 6501 3665 
+
+      Prefer not to answer      Daily or almost daily 
+                        11                       3408 
+Three or four times a week       Once or twice a week 
+                      3252                       3388 
+One to three times a month     Special occasions only 
+                      1476                       1569 
+                     Never 
+                      1155 
+
+Prefer not to answer          Do not know                   No 
+                  10                   33                13222 
+                 Yes 
+                 994 
+
+ Prefer not to answer           Do not know                 Never 
+                    4                    19                  1119 
+Less than once a week           Once a week      2-4 times a week 
+                 4098                  4206                  4237 
+     5-6 times a week    Once or more daily 
+                  453                   123 
+[1] "test group table"
+
+   0    2    3 
+3638   78 1135 
+[1] "train group table"
+
+   0    2    3 
+1213  216 3422 
+[1] "all group table"
+
+   2    3 
+ 294 4557 

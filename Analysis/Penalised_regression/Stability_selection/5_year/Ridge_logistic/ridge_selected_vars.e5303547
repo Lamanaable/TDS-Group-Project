@@ -1,0 +1,33 @@
+Loading anaconda3/personal
+  Loading requirement: fix_unwritable_tmp fix_setxattr
+Loading required package: Matrix
+Loaded glmnet 4.1-3
+Warning message:
+package ‘Matrix’ was built under R version 4.1.1 
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Warning messages:
+1: package ‘doParallel’ was built under R version 4.1.2 
+2: package ‘foreach’ was built under R version 4.1.2 
+3: package ‘iterators’ was built under R version 4.1.2 
+Loading required package: ggplot2
+Loading required package: lattice
+Warning messages:
+1: package ‘caret’ was built under R version 4.1.2 
+2: package ‘lattice’ was built under R version 4.1.1 
+Type 'citation("pROC")' for a citation.
+
+Attaching package: ‘pROC’
+
+The following objects are masked from ‘package:stats’:
+
+    cov, smooth, var
+
+Warning message:
+package ‘pROC’ was built under R version 4.1.1 
+Setting levels: control = 0, case = 1
+Setting direction: controls < cases
+Warning message:
+In roc.default(response, predictor, ci = FALSE, ...) :
+  Deprecated use a matrix as predictor. Unexpected results may be produced, please pass a numeric vector.

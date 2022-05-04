@@ -4,11 +4,21 @@
 
 # Session Data files
 .RData
+<<<<<<< HEAD
+Data/
+
+# Session files with rds, csv, txt
+*.rds
+*.csv
+*.txt
+||||||| bb562cd
+=======
 Data/
 
 *.txt
 *.rds
 *.csv
+>>>>>>> main
 
 # User-specific files
 .Ruserdata

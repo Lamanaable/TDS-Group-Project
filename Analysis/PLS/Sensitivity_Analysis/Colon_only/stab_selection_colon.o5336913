@@ -1,0 +1,16 @@
+[1] "Number of cores"
+[1] 256
+[1] TRUE
+null device 
+          1 
+Calibrated parameters (X):
+Component 1: n = 5.000, alpha = 0.100 and pi = 0.900
+
+Maximum stability score (X): 
+Component 1: 47824.100
+
+Number of selected variable(s) (X): 
+Component 1: 58
+
+  comp nx alphax pix
+1    1  5    0.1 0.9

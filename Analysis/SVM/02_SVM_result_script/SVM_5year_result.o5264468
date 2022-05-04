@@ -1,0 +1,11 @@
+                  accuracy        f1 precision    recall
+SVM_small_linear  0.532458  0.365974  0.335753  0.402174
+                  accuracy        f1 precision    recall
+SVM_small_linear  0.532458  0.365974  0.335753  0.402174
+SVM_linear        0.565281  0.446097   0.38961  0.521739
+                  accuracy        f1 precision    recall
+SVM_small_linear  0.532458  0.365974  0.335753  0.402174
+SVM_linear        0.565281  0.446097   0.38961  0.521739
+SVM_linear_tune   0.565281   0.42471  0.381944  0.478261
+SVM_rbf_tune      0.574034  0.399177  0.378906  0.421739
+SVM_sigmoid_tune  0.576951  0.418838  0.388476  0.454348

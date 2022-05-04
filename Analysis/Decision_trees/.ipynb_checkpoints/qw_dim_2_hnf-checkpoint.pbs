@@ -1,0 +1,21 @@
+#PBS -l select=1:ncpus=64:mpiprocs=64:mem=124gb
+#PBS -l walltime=24:0:0
+#PBS -N Random
+
+# Load modules for any applications
+set -xe
+
+module load anaconda3/personal
+module load mpi
+
+# Change to the directory the job was submitted from
+
+cd $PBS_O_WORKDIR
+
+# Run program, using 'mpiexec' to start the job
+# mpiexec automatically picks up the # of cores
+# assigned to the job. No other flags are required
+#  - note: don't use 'mpirun'
+
+
+mpiexec python3 decision_trees.py

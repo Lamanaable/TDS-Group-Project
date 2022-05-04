@@ -1,0 +1,65 @@
+[1] "loading packages"
+[1] "Number of cores"
+[1] 256
+[1] "Creating an empty matrix"
+      alpha lambda min lambda 1se No. predictors lambda ,min
+Lasso    NA         NA         NA                         NA
+      No. predictors lambda 1se Test MSE lambda min Test MSE lambda 1se
+Lasso                        NA                  NA                  NA
+[1] "Data preparation"
+[1] "Checking everything is numeric"
+
+numeric 
+    214 
+
+numeric 
+    214 
+'data.frame':	4571 obs. of  1 variable:
+ $ cc_status: Factor w/ 2 levels "0","1": 1 1 1 2 1 1 2 1 1 1 ...
+'data.frame':	1371 obs. of  1 variable:
+ $ cc_status: Factor w/ 2 levels "0","1": 1 1 2 1 1 1 2 2 2 1 ...
+[1] "Checking for NAs"
+complete_index
+TRUE 
+4571 
+complete_index
+TRUE 
+1371 
+complete_index
+TRUE 
+4571 
+complete_index
+TRUE 
+1371 
+[1] "Converting to matrices to be used by glmnet"
+[1] "Final check"
+
+numeric 
+ 978194 
+
+numeric 
+ 293394 
+ chr [1:4571, 1] "0" "0" "0" "1" "0" "0" "1" "0" "0" "0" "0" "0" "1" "0" ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:4571] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+ chr [1:1371, 1] "0" "0" "1" "0" "0" "0" "1" "1" "1" "0" "1" "1" "0" "0" ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:1371] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+[1] "Lasso cross-validation"
+[1] "Plotting lasso"
+null device 
+          1 
+[1] "Number of non-zero coefficients "
+[1] 6
+[1] 214
+[1] "Extracting lambda min and 1se"
+[1] 0.009098761
+[1] 0.02531784
+[1] "MSE associated with lambda min"
+[1] 1.262856
+[1] "MSE associated with lambda 1se"
+[1] 1.274449
+[1] "Extracting the desired lambda valued (1se)"
+[1] "Adding to first row of summary results"

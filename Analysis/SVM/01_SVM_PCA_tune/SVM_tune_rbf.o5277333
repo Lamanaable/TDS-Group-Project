@@ -1,0 +1,11 @@
+{'C': 0.2, 'gamma': 0.001, 'kernel': 'rbf'}
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :        64            24
+ Used       :         3 (peak)  15.13 (ave)
+
+============================================

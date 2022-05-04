@@ -1,0 +1,34 @@
+Loading anaconda3/personal
+  Loading requirement: fix_unwritable_tmp fix_setxattr
+/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:372: FitFailedWarning: 
+45 fits failed out of a total of 360.
+The score on these train-test partitions for these parameters will be set to nan.
+If these failures are not expected, you can try to debug them by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+45 fits failed with the following error:
+Traceback (most recent call last):
+  File "/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/sklearn/model_selection/_validation.py", line 680, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py", line 255, in fit
+    fit(X, y, sample_weight, solver_type, kernel, random_seed=seed)
+  File "/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py", line 315, in _dense_fit
+    ) = libsvm.fit(
+  File "sklearn/svm/_libsvm.pyx", line 189, in sklearn.svm._libsvm.fit
+ValueError: C <= 0
+
+  warnings.warn(some_fits_failed_message, FitFailedWarning)
+/rds/general/user/wq21/home/anaconda3/lib/python3.9/site-packages/sklearn/model_selection/_search.py:969: UserWarning: One or more of the test scores are non-finite: [0.55926601 0.55827983 0.55777978 0.55752921 0.55705986 0.5565014
+ 0.55581727 0.55524893 0.55469569        nan        nan        nan
+        nan        nan        nan        nan        nan        nan
+ 0.55631033 0.55254053 0.54575408 0.54172385 0.53923168 0.53758443
+ 0.53646589 0.53591538 0.53491844 0.56029684 0.55825402 0.55833076
+ 0.55853067 0.55825789 0.55836709 0.55786651 0.55787672 0.55834454
+ 0.55940209 0.55728743 0.55523431 0.55337612 0.55251981 0.55180537
+ 0.55158118 0.55206408 0.55249126 0.557423   0.55511482 0.55212249
+ 0.54842454 0.54602261 0.54489426 0.54447223 0.54374498 0.54328758
+ 0.55719316 0.55381715 0.5487787  0.5441098  0.54186681 0.54032766
+ 0.53931643 0.53869126 0.53794984 0.55631033 0.55254053 0.54575408
+ 0.54172385 0.53923168 0.53758443 0.53646589 0.53591538 0.53491844]
+  warnings.warn(

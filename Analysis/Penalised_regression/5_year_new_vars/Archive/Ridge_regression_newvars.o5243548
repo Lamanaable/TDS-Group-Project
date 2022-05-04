@@ -1,0 +1,72 @@
+[1] "loading packages"
+[1] "Creating an empty matrix"
+      alpha lambda min lambda 1se No. predictors lambda min
+Ridge    NA         NA         NA                        NA
+      No. predictors lambda 1se Test MSE lambda min Test MSE lambda 1se
+Ridge                        NA                  NA                  NA
+[1] "Data preparation"
+[1] "Checking everything is numeric"
+
+integer numeric 
+     92     124 
+
+integer numeric 
+     92     124 
+'data.frame':	4571 obs. of  1 variable:
+ $ cc_status: int  0 0 0 1 0 0 1 0 0 0 ...
+'data.frame':	1371 obs. of  1 variable:
+ $ cc_status: int  0 0 1 0 0 0 1 1 1 0 ...
+[1] "Checking for NAs"
+complete_index
+TRUE 
+4571 
+complete_index
+TRUE 
+1371 
+complete_index
+TRUE 
+4571 
+complete_index
+TRUE 
+1371 
+[1] "Converting to matrices to be used by glmnet"
+[1] "Final check"
+
+numeric 
+ 987336 
+
+numeric 
+ 296136 
+ int [1:4571, 1] 0 0 0 1 0 0 1 0 0 0 ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:4571] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+ int [1:1371, 1] 0 0 1 0 0 0 1 1 1 0 ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:1371] "1" "2" "3" "4" ...
+  ..$ : chr "cc_status"
+[1] "Ridge cross-validation"
+[1] "Plotting ridge"
+null device 
+          1 
+[1] "Number of non-zero coefficients (should be full amount for ridge)"
+[1] 216
+[1] "Number of variables"
+[1] 216
+[1] "Extracting lambda min and 1se"
+[1] 20586.9
+[1] 91212.75
+[1] "MSE associated with lambda min"
+[1] 1.252428
+[1] "MSE associated with lambda 1se"
+[1] 1.258427
+[1] "Extracting the desired lambda valued (1se) - check if appropriate"
+[1] "Making predictions based on the test set and extracting MSE on test set"
+[1] 2.077965
+[1] 2.261145
+[1] "Results"
+      alpha lambda min lambda 1se No. predictors lambda min
+Ridge     0    20586.9   91212.75                       216
+      No. predictors lambda 1se Test MSE lambda min Test MSE lambda 1se
+Ridge                       216            2.261145            2.077965
+[1] "done"

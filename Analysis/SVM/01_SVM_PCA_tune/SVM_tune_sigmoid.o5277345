@@ -1,0 +1,11 @@
+{'coef0': 1.0, 'gamma': 0.0005, 'kernel': 'sigmoid'}
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :        64            24
+ Used       :         3 (peak)  14.97 (ave)
+
+============================================

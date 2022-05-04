@@ -1,0 +1,11 @@
+The best parameters are {'class_weight': {'Control': 1, 'Case': 2}, 'criterion': 'gini', 'max_depth': 4, 'max_features': 'log2', 'min_samples_leaf': 128, 'n_estimators': 250, 'oob_score': False}
+
+============================================
+
+        Job resource usage summary 
+
+                 Memory (GB)    NCPUs
+ Requested  :        64            48
+ Used       :        13 (peak)  47.37 (ave)
+
+============================================

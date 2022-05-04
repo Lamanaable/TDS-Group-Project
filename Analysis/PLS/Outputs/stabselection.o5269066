@@ -1,0 +1,15 @@
+[1] "Number of cores"
+[1] 256
+[1] TRUE
+null device 
+          1 
+Calibrated parameters: lambda = 7.000 and pi = 0.900
+
+Maximum stability score: 27668.059
+
+Number of selected variable(s): 22
+     lambda  pi
+[1,]      7 0.9
+null device 
+          1 
+[1] 89

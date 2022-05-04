@@ -1,0 +1,12 @@
+Loading anaconda3/personal
+  Loading requirement: fix_unwritable_tmp fix_setxattr
+Loading required package: Matrix
+Loaded glmnet 4.1-3
+Warning message:
+package ‘Matrix’ was built under R version 4.1.1 
+Error in h(simpleError(msg, call)) : 
+  error in evaluating the argument 'x' in selecting a method for function 'drop': requires numeric/complex matrix/vector arguments
+Calls: cv.glmnet ... glmnet -> lognet -> drop -> .handleSimpleError -> h
+In addition: Warning message:
+In Ops.factor(left, right) : ‘*’ not meaningful for factors
+Execution halted

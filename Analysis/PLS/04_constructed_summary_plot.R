@@ -7,6 +7,7 @@ CRC_ordered <- readRDS('/rds/general/user/wq21/projects/hda_21-22/live/TDS/Group
 # Stab_sgPLS <- readRDS('/rds/general/user/wq21/projects/hda_21-22/live/TDS/Group_2/TDS-Group-Project/Analysis/PLS/Outputs/stability_analysis_sgPLS_sum.rds')
 
 # Loading packages
+.libPaths(.libPaths()[1])
 suppressPackageStartupMessages(library(sgPLS))
 library(pheatmap)
 library(utils)
@@ -33,9 +34,10 @@ print(all(rownames(X_train)==rownames(Y_train)))
 
 # Visualization of AUC and stability selection in lasso--------
 LASSO <- readRDS('/rds/general/user/wq21/projects/hda_21-22/live/TDS/Group_2/TDS-Group-Project/Analysis/Penalised_regression/Stability_selection/5_year/Outputs/stab_selection_lasso_selprop.rds')
-LASSO <- sort(LASSO[LASSO>pi],decreasing = TRUE)
+
 lambda = 0.005 
 pi = 0.900
+LASSO <- sort(LASSO[LASSO>pi],decreasing = TRUE)
 
 # a single test of glmnet
 suppressPackageStartupMessages(library(glmnet))
@@ -86,9 +88,12 @@ meanbeta_merge = meanbeta_merge[which(meanbeta_merge$feature %in% names(LASSO)),
 head(meanbeta_merge)
 
 AUC = NULL
-
 AUC.l = NULL
 AUC.h = NULL
+
+AUC_train = NULL
+AUC.l_train = NULL
+AUC.h_train = NULL
 
 # compute AUC---------
 library(pROC)
@@ -124,6 +129,13 @@ for (Nkeep in seq(1,length(LASSO))) {
     AUC.l <- cbind(AUC.l, AUC.CI[1])
     AUC.h <- cbind(AUC.h, AUC.CI[3])
     
+    y_pred_train = coef(fit)[1] + train_sub[,1]*coef(fit)[2]
+    AUC.CI_train = ci.auc(train_sub$Y_train, y_pred_train,boot.n=1000,parallel=TRUE) 
+    
+    AUC_train <- cbind(AUC_train,AUC.CI_train[2])
+    AUC.l_train <- cbind(AUC.l_train, AUC.CI_train[1])
+    AUC.h_train <- cbind(AUC.h_train, AUC.CI_train[3])
+    
   }else {
     X_train_sub = X_train[,names(X_train) %in% keep]
     X_test_sub = X_test[,names(X_test) %in% keep]
@@ -137,22 +149,37 @@ for (Nkeep in seq(1,length(LASSO))) {
     AUC <- cbind(AUC,AUC.CI[2])
     AUC.l <- cbind(AUC.l, AUC.CI[1])
     AUC.h <- cbind(AUC.h, AUC.CI[3])
+    
+    y_pred_train = predict(fit,newdata = X_train_sub, type='response')
+    AUC.CI_train = ci.auc(train_sub$Y_train, y_pred_train,boot.n=1000,parallel=TRUE) 
+    
+    AUC_train <- cbind(AUC_train,AUC.CI_train[2])
+    AUC.l_train <- cbind(AUC.l_train, AUC.CI_train[1])
+    AUC.h_train <- cbind(AUC.h_train, AUC.CI_train[3])
   }
 }
 
 AUC = as.vector(AUC)
-
 AUC.l = as.vector(AUC.l)
-
 AUC.h = as.vector(AUC.h)
 
+AUC_train = as.vector(AUC_train)
+AUC.l_train = as.vector(AUC.l_train)
+AUC.h_train = as.vector(AUC.h_train)
+
+
 # make a results table
-results <- cbind(AUC,AUC.l,AUC.h)
+results <- cbind(AUC,AUC.l,AUC.h,AUC_train,AUC.l_train,AUC.h_train)
 results <- as.data.frame(results)
 
 results$AUC <- round(results$AUC,3)
 results$AUC.l <- round(results$AUC.l,3)
 results$AUC.h <- round(results$AUC.h,3)
+
+results$AUC_train <- round(results$AUC_train,3)
+results$AUC.l_train <- round(results$AUC.l_train,3)
+results$AUC.h_train <- round(results$AUC.h_train,3)
+
 rownames(results) = rownames(meanbeta_merge)
 results$feature = rownames(results)
 
@@ -198,7 +225,7 @@ results$feature <- as.character(results$feature)
 #Then turn it back into a factor with the levels in the correct order
 results$feature <- factor(results$feature, levels=unique(results$feature))
 
-pdf('Outputs/logistic_lasso_summary_Beta.pdf',width=10,height=4)
+pdf('Outputs/logistic_lasso_summary_Beta.pdf',width=10,height=3.5)
 par(mar=c(6,5,2,4))
 
 library(RColorBrewer)
@@ -217,7 +244,7 @@ dev.off()
 
 ## plot AUC and error bar-------
 
-pdf('Outputs/logistic_lasso_summary_AUC_CI.pdf',width=10,height=5)
+pdf('Outputs/logistic_lasso_summary_AUC_CI.pdf',width=10,height=4)
 par(mar=c(6,5,2,4))
 
 breaks = c(seq(0.5,0.6,by=0.02), 0.45, round(results$AUC[length(LASSO)],2), 0.65)
@@ -240,13 +267,47 @@ p2 <- ggplot(data=results, aes(x=feature,y=AUC))+
   geom_errorbar(aes(ymin= AUC.l,ymax=AUC.h),width=0.2, 
                 color = ifelse(results$stab>pi,'lightblue','grey')) +
   geom_point(color = ifelse(results$stab>pi,'royalblue','grey')) +
-  ggtitle(label = 'logistic sgPLS summary: AUC') +
+  ggtitle(label = 'lasso summary: AUC') +
   scale_y_continuous(limits = c(0.45,0.65), breaks = breaks, labels = labels,
                      name = "AUC in test data") +
   geom_hline(yintercept = results$AUC[length(LASSO)], color = 'black',alpha=0.5,linetype=2) + 
   theme_bw() 
 
 p2 + theme(axis.text.x = element_text(
+  angle = 90, vjust = 0.5, hjust=1, size=6, color = mycol))
+
+dev.off()
+
+pdf('Outputs/logistic_lasso_summary_AUC_CI_train.pdf',width=10,height=4)
+par(mar=c(6,5,2,4))
+
+breaks = c(seq(0.5,0.6,by=0.02), 0.45, round(results$AUC_train[length(LASSO)],2), 0.65)
+labels = as.character(breaks)
+
+library(RColorBrewer)
+MyPal = brewer.pal("Paired", n = 8)
+mycol = as.character(recode(results$Groups, 
+                            "Outcome" = 'yellow',
+                            "Baseline" = 'lightcoral',
+                            "Physical" = 'mediumpurple1',
+                            "SocioDemo" = 'maroon1',
+                            "Lifestyle" = 'cyan3',
+                            "Family_history" = 'seagreen3',
+                            "Biomarker"= 'darkgoldenrod',
+                            "Meds_Ops" = 'steelblue1',
+                            "Comorbidity" = 'olivedrab4'))
+
+p2_train <- ggplot(data=results, aes(x=feature,y=AUC_train))+
+  geom_errorbar(aes(ymin= AUC.l_train,ymax=AUC.h_train),width=0.2, 
+                color = ifelse(results$stab>pi,'lightblue','grey')) +
+  geom_point(color = ifelse(results$stab>pi,'royalblue','grey')) +
+  ggtitle(label = 'lasso summary: AUC in train') +
+  scale_y_continuous(limits = c(0.45,0.65), breaks = breaks, labels = labels,
+                     name = "AUC in train data") +
+  geom_hline(yintercept = results$AUC_train[length(LASSO)], color = 'black',alpha=0.5,linetype=2) + 
+  theme_bw() 
+
+p2_train + theme(axis.text.x = element_text(
   angle = 90, vjust = 0.5, hjust=1, size=6, color = mycol))
 
 dev.off()
@@ -267,8 +328,6 @@ p3 <- ggplot(data=results, aes(x=feature,y=stab)) +
 
 p3 + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size=6))
 dev.off()
-
-
 
 
 
@@ -355,9 +414,12 @@ B = meanbeta_merge[-(which(meanbeta_merge$feature %in% names(stab_selected))),]
 meanbeta_merge <- rbind(A,B)
   
 AUC = NULL
-
 AUC.l = NULL
 AUC.h = NULL
+
+AUC_train = NULL
+AUC.l_train = NULL
+AUC.h_train = NULL
 
 # compute AUC---------
 library(pROC)
@@ -393,6 +455,13 @@ for (Nkeep in seq(1,length(stab_plot))) {
     AUC.l <- cbind(AUC.l, AUC.CI[1])
     AUC.h <- cbind(AUC.h, AUC.CI[3])
     
+    y_pred_train = coef(fit)[1] + train_sub[,1]*coef(fit)[2]
+    AUC.CI_train = ci.auc(train_sub$Y_train, y_pred_train,boot.n=1000,parallel=TRUE) 
+    
+    AUC_train <- cbind(AUC_train,AUC.CI_train[2])
+    AUC.l_train <- cbind(AUC.l_train, AUC.CI_train[1])
+    AUC.h_train <- cbind(AUC.h_train, AUC.CI_train[3])
+    
   }else {
   X_train_sub = X_train[,names(X_train) %in% keep]
   X_test_sub = X_test[,names(X_test) %in% keep]
@@ -406,22 +475,36 @@ for (Nkeep in seq(1,length(stab_plot))) {
   AUC <- cbind(AUC,AUC.CI[2])
   AUC.l <- cbind(AUC.l, AUC.CI[1])
   AUC.h <- cbind(AUC.h, AUC.CI[3])
+  
+  y_pred_train = predict(fit,newdata = X_train_sub, type='response')
+  AUC.CI_train = ci.auc(train_sub$Y_train, y_pred_train,boot.n=1000,parallel=TRUE) 
+  
+  AUC_train <- cbind(AUC_train,AUC.CI_train[2])
+  AUC.l_train <- cbind(AUC.l_train, AUC.CI_train[1])
+  AUC.h_train <- cbind(AUC.h_train, AUC.CI_train[3])
   }
 }
 
 AUC = as.vector(AUC)
-
 AUC.l = as.vector(AUC.l)
-
 AUC.h = as.vector(AUC.h)
 
+AUC_train = as.vector(AUC_train)
+AUC.l_train = as.vector(AUC.l_train)
+AUC.h_train = as.vector(AUC.h_train)
+
 # make a results table
-results <- cbind(AUC,AUC.l,AUC.h)
+results <- cbind(AUC,AUC.l,AUC.h,AUC_train,AUC.l_train,AUC.h_train)
 results <- as.data.frame(results)
 
 results$AUC <- round(results$AUC,3)
 results$AUC.l <- round(results$AUC.l,3)
 results$AUC.h <- round(results$AUC.h,3)
+
+results$AUC_train <- round(results$AUC_train,3)
+results$AUC.l_train <- round(results$AUC.l_train,3)
+results$AUC.h_train <- round(results$AUC.h_train,3)
+
 rownames(results) = rownames(meanbeta_merge)
 results$feature = rownames(results)
 
@@ -468,7 +551,7 @@ results$feature <- as.character(results$feature)
 #Then turn it back into a factor with the levels in the correct order
 results$feature <- factor(results$feature, levels=unique(results$feature))
 
-pdf('Outputs/logistic_sgPLS_summary_Beta.pdf',width=7,height=4)
+pdf('Outputs/logistic_sgPLS_summary_Beta.pdf',width=7,height=3)
 par(mar=c(6,5,2,4))
 
 library(RColorBrewer)
@@ -487,7 +570,7 @@ dev.off()
 
 ## plot AUC and error bar-------
 
-pdf('Outputs/logistic_sgPLS_summary_AUC_CI.pdf',width=7,height=5)
+pdf('Outputs/logistic_sgPLS_summary_AUC_CI.pdf',width=7,height=4)
 par(mar=c(6,5,2,4))
 
 breaks = c(seq(0.5,0.6,by=0.02), 0.45, round(results$AUC[length(stab_selected)],2), 0.65)
@@ -517,6 +600,41 @@ p2 <- ggplot(data=results, aes(x=feature,y=AUC))+
   theme_bw() 
 
 p2 + theme(axis.text.x = element_text(
+  angle = 90, vjust = 0.5, hjust=1, size=6, color = mycol))
+
+dev.off()
+
+
+pdf('Outputs/logistic_sgPLS_summary_AUC_CI_train.pdf',width=7,height=4)
+par(mar=c(6,5,2,4))
+
+breaks = c(seq(0.5,0.6,by=0.02), 0.45, round(results$AUC_train[length(stab_selected)],2), 0.65)
+labels = as.character(breaks)
+
+library(RColorBrewer)
+MyPal = brewer.pal("Paired", n = 8)
+mycol = as.character(recode(results$Groups, 
+                            "Outcome" = 'yellow',
+                            "Baseline" = 'lightcoral',
+                            "Physical" = 'mediumpurple1',
+                            "SocioDemo" = 'maroon1',
+                            "Lifestyle" = 'cyan3',
+                            "Family_history" = 'seagreen3',
+                            "Biomarker"= 'darkgoldenrod',
+                            "Meds_Ops" = 'steelblue1',
+                            "Comorbidity" = 'olivedrab4'))
+
+p2_train <- ggplot(data=results, aes(x=feature,y=AUC_train))+
+  geom_errorbar(aes(ymin= AUC.l_train,ymax=AUC.h_train),width=0.2, 
+                color = 'lightblue') +
+  geom_point(color = 'royalblue') +
+  ggtitle(label = 'logistic sgPLS summary: AUC in train') +
+  scale_y_continuous(limits = c(0.45,0.65), breaks = breaks, labels = labels,
+                     name = "AUC in train data") +
+  geom_hline(yintercept = results$AUC_train[dim(results)[1]], color = 'black',alpha=0.5,linetype=2) + 
+  theme_bw() 
+
+p2_train + theme(axis.text.x = element_text(
   angle = 90, vjust = 0.5, hjust=1, size=6, color = mycol))
 
 dev.off()
@@ -565,7 +683,6 @@ X_test = test[,colnames(test) %in% inter]
 Y_test = test$cc_status
 
 print(all(rownames(X_train)==rownames(Y_train)))
-covars = train[,c('age_recr','family_history_CRC')]
 
 fit <- glm(data=X_train, formula=Y_train~.,family='binomial')
 OR = coef(fit)[2:length(coef(fit))]
@@ -589,6 +706,10 @@ results_inter
 AUC = NULL
 AUC.l = NULL
 AUC.h = NULL
+
+AUC_train = NULL
+AUC.l_train = NULL
+AUC.h_train = NULL
 
 # compute AUC---------
 library(pROC)
@@ -617,6 +738,13 @@ for (Nkeep in seq(1,length(inter))) {
     AUC.l <- cbind(AUC.l, AUC.CI[1])
     AUC.h <- cbind(AUC.h, AUC.CI[3])
     
+    y_pred_train = coef(fit)[1] + train_sub[,1]*coef(fit)[2]
+    AUC.CI_train = ci.auc(train_sub$Y_train, y_pred_train,boot.n=1000,parallel=TRUE) 
+    
+    AUC_train <- cbind(AUC_train,AUC.CI_train[2])
+    AUC.l_train <- cbind(AUC.l_train, AUC.CI_train[1])
+    AUC.h_train <- cbind(AUC.h_train, AUC.CI_train[3])
+    
   }else {
     X_train_sub = X_train[,names(X_train) %in% keep]
     X_test_sub = X_test[,names(X_test) %in% keep]
@@ -632,6 +760,13 @@ for (Nkeep in seq(1,length(inter))) {
     AUC <- cbind(AUC,AUC.CI[2])
     AUC.l <- cbind(AUC.l, AUC.CI[1])
     AUC.h <- cbind(AUC.h, AUC.CI[3])
+    
+    y_pred_train = predict(fit,newdata = train_sub, type='response')
+    AUC.CI_train = ci.auc(train_sub$Y_train, y_pred_train,boot.n=1000,parallel=TRUE) 
+    
+    AUC_train <- cbind(AUC_train,AUC.CI_train[2])
+    AUC.l_train <- cbind(AUC.l_train, AUC.CI_train[1])
+    AUC.h_train <- cbind(AUC.h_train, AUC.CI_train[3])
   }
 }
 
@@ -639,8 +774,13 @@ AUC = as.vector(AUC)
 AUC.l = as.vector(AUC.l)
 AUC.h = as.vector(AUC.h)
 
+AUC_train = as.vector(AUC_train)
+AUC.l_train = as.vector(AUC.l_train)
+AUC.h_train = as.vector(AUC.h_train)
+
 # make a results table
-results_inter <- cbind(results_inter,AUC,AUC.l,AUC.h)
+results_inter <- cbind(results_inter,AUC,AUC.l,AUC.h,
+                       AUC_train,AUC.l_train,AUC.h_train)
 
 results_inter$feature = rownames(results_inter)
 
@@ -654,9 +794,8 @@ stab_sgPLS <- as.data.frame(stab_sgPLS)
 stab_sgPLS$feature <- rownames(stab_sgPLS)
 results_inter <- merge(results_inter,stab_sgPLS,by='feature')
 
-head(results_inter)
-
 results_inter <- results_inter[order(abs(results_inter$OR),decreasing=TRUE),]
+head(results_inter)
 
 saveRDS(results_inter,'Summary_lasso_sgPLS/logistic_lasso_sgPLS_stab_summary.rds')
 
@@ -665,6 +804,7 @@ saveRDS(results_inter,'Summary_lasso_sgPLS/logistic_lasso_sgPLS_stab_summary.rds
 # Load Data
 vars = read.csv('/rds/general/project/hda_21-22/live/TDS/Group_2/TDS-Group-Project/Data_exploration/Variable_definition/vars_lookup.csv')
 results = readRDS('Summary_lasso_sgPLS/logistic_lasso_sgPLS_stab_summary.rds')
+uni = read.csv('/rds/general/project/hda_21-22/live/TDS/Group_2/TDS-Group-Project/Analysis/Univariate/univariate_model_results.csv')
 vars$Oldname <- as.character(vars$Oldname)
 vars$Newname <- as.character(vars$Newname)
 vars$feature <- vars$Oldname
@@ -691,7 +831,9 @@ results_inter <- df
 results_inter$feature <- as.character(results_inter$feature)
 results_inter$feature <- factor(results_inter$feature, levels=unique(results_inter$feature))
 
-pdf('Summary_lasso_sgPLS/logistic_lasso_sgPLS_summary_OR.pdf',width=7,height=4)
+results_inter
+
+pdf('Summary_lasso_sgPLS/logistic_lasso_sgPLS_summary_OR.pdf',width=7,height=3.5)
 par(mar=c(6,5,2,4))
 
 MyPal = brewer.pal("Paired", n = 8)
@@ -712,7 +854,7 @@ dev.off()
 
 ## plot AUC and error bar-------
 
-pdf('Summary_lasso_sgPLS/logistic_lasso_sgPLS_summary_AUC_CI.pdf',width=7,height=5)
+pdf('Summary_lasso_sgPLS/logistic_lasso_sgPLS_summary_AUC_CI.pdf',width=7,height=4)
 par(mar=c(6,5,2,4))
 
 breaks = c(seq(0.5,0.6,by=0.02), 0.45, round(results_inter$AUC[dim(results_inter)[1]],2), 0.65)
@@ -734,6 +876,37 @@ p2 <- ggplot(data=results_inter, aes(x=feature,y=AUC))+
   scale_y_continuous(limits = c(0.45,0.65), breaks = breaks, labels = labels,
                      name = "AUC in unseen data") +
   geom_hline(yintercept = results_inter$AUC[dim(results_inter)[1]], color = 'black', alpha=0.5,linetype=2) + 
+  theme_bw() 
+
+p2 + theme(axis.text.x = element_text(
+  angle = 90, vjust = 0.5, hjust=1, size=8, color = mycol),
+  axis.text.y = element_text(color='gray44'),
+  axis.title.y = element_text(size = 9))
+
+dev.off()
+
+pdf('Summary_lasso_sgPLS/logistic_lasso_sgPLS_summary_AUC_CI_train.pdf',width=7,height=4)
+par(mar=c(6,5,2,4))
+
+breaks = c(seq(0.5,0.6,by=0.02), 0.45, round(results_inter$AUC_train[dim(results_inter)[1]],2), 0.65)
+labels = as.character(breaks)
+
+mycol = as.character(recode(results_inter$Groups,
+                            "Physical" = 'mediumpurple1',
+                            "Lifestyle" = 'cyan3',
+                            "Family_history" = 'seagreen3',
+                            "Biomarker"= 'darkgoldenrod',
+                            "Meds_Ops" = 'steelblue1',
+                            "Comorbidity" = 'olivedrab4'))
+
+p2 <- ggplot(data=results_inter, aes(x=feature,y=AUC_train))+
+  geom_errorbar(aes(ymin= AUC.l_train,ymax=AUC.h_train), width=0.2, 
+                color = 'royalblue',alpha=0.5) +
+  geom_point(color = 'royalblue') +
+  ggtitle(label = 'logistic lasso-sgPLS summary: cumulative AUC in train') +
+  scale_y_continuous(limits = c(0.45,0.65), breaks = breaks, labels = labels,
+                     name = "AUC in training data") +
+  geom_hline(yintercept = results_inter$AUC_train[dim(results_inter)[1]], color = 'black', alpha=0.5,linetype=2) + 
   theme_bw() 
 
 p2 + theme(axis.text.x = element_text(
@@ -782,7 +955,29 @@ p4 + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size=8),
 dev.off()
 
 
-## Summary of adjusted LASSO and sgPLS---------------
+## plot univariate results -----------
+results_inter$beta = log(results_inter$beta)
+
+pdf('Summary_lasso_sgPLS/logistic_lasso_sgPLS_summary_uni.pdf',width=7,height=4)
+par(mar=c(6,5,2,4))
+
+MyPal = brewer.pal("Paired", n = 8)
+  
+p5 <- ggplot(data=results_inter, aes(x=feature,y=beta)) +
+  geom_bar(stat = "identity", width = 0.01, 
+           color = ifelse(results_inter$beta > 0, MyPal[6],'royalblue')) +
+  ggtitle(label = 'Beta for univariate') +
+  geom_hline(yintercept = 0, color = 'black', alpha=0.5, linetype=2) + 
+  ylab('logOR (univariate)') +
+  theme_light()
+
+p5 + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size=8),
+           axis.text.y = element_text(color='gray44'),
+           axis.title.y = element_text(size = 9))
+dev.off()
+
+
+# Summary of adjusted LASSO and sgPLS---------------
 LASSO <- readRDS('/rds/general/user/wq21/projects/hda_21-22/live/TDS/Group_2/TDS-Group-Project/Analysis/Penalised_regression/Stability_selection/5_year/Outputs/stab_selection_lasso_selprop.rds')
 LASSO <- sort(LASSO[LASSO>pi],decreasing = TRUE)
 

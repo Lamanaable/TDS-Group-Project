@@ -59,7 +59,7 @@ This script cut down cases to 5-year incident cases\
 ----------------------------------------------------------------------------------------------------
 
 10.rename_cols\
-A bit of code to remae variable names neatly for reporting and plots\
+A bit of code to rename variable names neatly for reporting and plots\
 
 ----------------------------------------------------------------------------------------------------
 Folders:

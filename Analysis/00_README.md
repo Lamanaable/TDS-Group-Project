@@ -1,4 +1,4 @@
-Folder Analysis
+Folder for Analysis
 
 ---------
 Folders:

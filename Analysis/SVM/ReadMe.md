@@ -32,8 +32,9 @@ Sens_colon: sensitivity analysis for colon
 
 Sens_rectum: sensitivity analysis for rectum
 
-
-
+---------------
+Scripts:
+---------------
 02_PLS_result.R
 Outputs for sgPLS after basic calibration, would not use this result as we have further stability selection
 

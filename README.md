@@ -36,7 +36,7 @@ Multivariable logistic regression of the 16 baseline variables with 5-year CRC o
 * Penalised_regression  
 LASSO variable selection using full list of variables. 
 * PLS 
-group - Partial Least Squares - Discriminant Analysis (gPLS-DA) variable selection using full list of variables.  
+group - Partial Least Squares - Discriminant Analysis (sgPLS-DA) variable selection using full list of variables.  
 * Decision_trees  
 Decision trees and boosting models  
 * AUC_Comparison_Plot   

@@ -4,9 +4,11 @@ Folder for SVM analysis
 Scripts:
 --------------
 00_SVM_PCA_preprocessing.R
+
 Group PCA preprocessing
 
 00_SVM_scale.R
+
 Normal SVM preprocessing
 
 ---------------
@@ -58,5 +60,6 @@ pca_train_5_year.csv/rds: training data for PCA-SVM
 pca_test_5_year.csv/rds: testing data for PCA-SVM
 
 train_5_year.csv/rds: training data for main-SVM
+
 test_5_year.csv/rds: testing data for main-SV
 

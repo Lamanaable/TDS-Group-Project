@@ -3,7 +3,7 @@ Folder for PLS analysis
 -------------
 Scripts:
 --------------
-00_Grou_CRC
+00_Group_CRC
 Group variables to ensure further grouping analysis
 
 01_PLS_calib.R

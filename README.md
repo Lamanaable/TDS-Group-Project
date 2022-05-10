@@ -5,6 +5,7 @@ Constructed Framework for Risk-Stratification and Risk Prediction for Colorectal
 
 ### Authors:  
 Ellie Bloom, Herman Eaves, Sophie Lai, Wei Quan 
+
 Imperial College London Health Data Analytics and Machine Learning MSc students 
 ### Finalised: 
 May 2022
